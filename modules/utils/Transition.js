@@ -88,12 +88,13 @@ function runTransitionToHooks(transition, routes, params, query, callback) {
  * The willTransitionTo and willTransitionFrom handlers receive
  * an instance of this class as their first argument.
  */
-function Transition(path, retry) {
+function Transition(path, retry, context) {
   this.path = path;
   this.abortReason = null;
   this.isAborted = false;
   this.retry = retry.bind(this);
   this._promise = null;
+  this.context = context;
 }
 
 assign(Transition.prototype, {
