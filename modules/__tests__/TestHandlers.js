@@ -115,3 +115,17 @@ exports.EchoBarParam = React.createClass({
     return <div className="EchoBarParam">{this.getParams().bar}</div>;
   }
 });
+
+exports.TransitionContext = React.createClass({
+  statics: {
+    willTransitionTo: function (transition) {
+      var service = transition.context.getService();
+      if (!service.isLoggedIn) {
+        transition.redirect('/foo');
+      }
+    }
+  },
+  render: function() {
+    return <div>TransitionContext</div>
+  }
+});
